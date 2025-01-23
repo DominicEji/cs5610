@@ -3,6 +3,8 @@ body {
     font-family: "Roboto", serif;
     background-color: rgb(231, 225, 214);
 
+}
+
 /* Center-align text in the header */
 header {
         text-align: center;
