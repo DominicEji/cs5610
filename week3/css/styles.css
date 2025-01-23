@@ -54,5 +54,8 @@ header {
         margin-left: 20px;
     }
 
-    
+    /* Add styles to the first bullet point (master's degree) */
+    .education ul:first-child li:first-child {
+        font-style: italic;
+    }
     
