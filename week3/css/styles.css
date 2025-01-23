@@ -8,22 +8,10 @@ header {
         margin-bottom: 5px;
         padding-bottom: 5px;
     }
-    
+
     header h1 {
         color: #1050aa;
         font-family: Georgia, 'Times New Roman', Times, serif;
         font-size: 2.2em;
     
-    }
-    
-    /* Bold font for the first paragraph */
-    #first-paragraph {
-        font-weight: bold;
-    }
-    
-    /* Style for education and experience sections */
-    .education,
-    .experience {
-        border: 2px dashed #000;
-        margin: 10px 0;
     }
