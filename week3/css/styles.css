@@ -55,13 +55,18 @@ header {
     }
 
     /* Add styles to the first bullet point (master's degree) */
-    .education ul:first-child li:first-child {
+    .education-list > li:first-child {
         font-style: italic;
+    }
+
+    /* Adjusting "Major" and "Minor" to normal font-style */
+    .education-list > li ul li {
+        font-style: normal;
     }
     
     /* Remove bullet points from skills section */
     .skills ul {
         list-style-type: none;
-        padding-left: 0; /* Remove default padding for ul */
+        padding-left: 20px; /* Remove default padding for ul */
     }
     
