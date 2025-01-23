@@ -1,7 +1,9 @@
+/* Set the whole page background color */
 body {
     font-family: "Roboto", serif;
     background-color: rgb(231, 225, 214);
 
+/* Center-align text in the header */
 header {
         text-align: center;
         border-bottom: 2px dotted darkslateblue;
@@ -9,6 +11,7 @@ header {
         padding-bottom: 5px;
     }
 
+    /* Style the h1 element */
     header h1 {
         color: #1050aa;
         font-family: Georgia, 'Times New Roman', Times, serif;
