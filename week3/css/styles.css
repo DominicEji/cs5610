@@ -59,3 +59,9 @@ header {
         font-style: italic;
     }
     
+    /* Remove bullet points from skills section */
+    .skills ul {
+        list-style-type: none;
+        padding-left: 0; /* Remove default padding for ul */
+    }
+    
