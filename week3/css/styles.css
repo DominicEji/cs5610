@@ -71,7 +71,7 @@ header {
     }
     
     /* This changes the list items except the first one in Experience section to darkGreen */
-    .experience ul > li:not(:first-child) {
+    .experience > ul > li ~ li {
         color: darkGreen;
     }
 
@@ -90,5 +90,10 @@ header {
     /* Add style to the last item in the skill section */
     .skills ul li:last-child {
         font-size: 1.3cm;
-        background-color: rgba(120, 120, 120, 0.2  );
+        background-color: rgba(120, 120, 120, 0.2);
+    }
+
+    /* Change visited links to header ro specific color */
+    header a:visited {
+        color:rgb(237, 122, 127);
     }
