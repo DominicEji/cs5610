@@ -81,3 +81,14 @@ header {
         display: inline-block;
         margin-right: 5px; /* Add space between the image and the link */        vertical-align: middle; /* Align the image vertically with the link */
     }
+
+    /* change color to crimson when hovering over links containing "github" */
+    a[href*="github"]:hover {
+        color: crimson;
+    }
+
+    /* Add style to the last item in the skill section */
+    .skills ul li:last-child {
+        font-size: 1.3cm;
+        background-color: rgba(120, 120, 120, 0.2  );
+    }
