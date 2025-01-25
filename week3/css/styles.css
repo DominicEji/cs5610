@@ -43,7 +43,7 @@ header {
 
     /* Add Github logo after the Github link*/
     a[href*="github.com"]::after {
-        content: url("../week3/images/GitHub-Mark-32px.png");
+        content: url("../images/GitHub-Mark-32px.png");
         display: inline-block;
         margin-left: 5px; /* Add space between the link and the image */
         vertical-align: middle; /* Align the image vertically with the link */
@@ -73,4 +73,11 @@ header {
     /* This changes the list items except the first one in Experience section to darkGreen */
     .experience ul > li:not(:first-child) {
         color: darkGreen;
+    }
+
+    /* Add a link icon before the links ending with .edu */
+    a[href$=".edu"]::before {
+        content: url("../images/link.png");
+        display: inline-block;
+        margin-right: 5px; /* Add space between the image and the link */        vertical-align: middle; /* Align the image vertically with the link */
     }
