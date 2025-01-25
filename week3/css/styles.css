@@ -70,3 +70,7 @@ header {
         padding-left: 20px; /* Remove default padding for ul */
     }
     
+    /* This changes the list items except the first one in Experience section to darkGreen */
+    .experience ul > li:not(:first-child) {
+        color: darkGreen;
+    }
