@@ -43,7 +43,7 @@ header {
 
     /* Add Github logo after the Github link*/
     a[href*="github.com"]::after {
-        content: url("../week3/images/GitHub-Mark-32px.png");
+        content: url("../images/GitHub-Mark-32px.png");
         display: inline-block;
         margin-left: 5px; /* Add space between the link and the image */
         vertical-align: middle; /* Align the image vertically with the link */
@@ -70,3 +70,30 @@ header {
         padding-left: 20px; /* Remove default padding for ul */
     }
     
+    /* This changes the list items except the first one in Experience section to darkGreen */
+    .experience > ul > li ~ li {
+        color: darkGreen;
+    }
+
+    /* Add a link icon before the links ending with .edu */
+    a[href$=".edu"]::before {
+        content: url("../images/link.png");
+        display: inline-block;
+        margin-right: 5px; /* Add space between the image and the link */        vertical-align: middle; /* Align the image vertically with the link */
+    }
+
+    /* change color to crimson when hovering over links containing "github" */
+    a[href*="github"]:hover {
+        color: crimson;
+    }
+
+    /* Add style to the last item in the skill section */
+    .skills ul li:last-child {
+        font-size: 1.3cm;
+        background-color: rgba(120, 120, 120, 0.2);
+    }
+
+    /* Change visited links to header ro specific color */
+    header a:visited {
+        color:rgb(237, 122, 127);
+    }
