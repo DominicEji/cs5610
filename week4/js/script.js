@@ -40,3 +40,26 @@ function printTotalPrice(billAmount) {
 }
 
 printTotalPrice(2455); // For a $2455 bill
+
+let students = [
+    {
+        name: "Cristian",
+        age: 30,
+        location: "Vancouver"
+},
+    {
+        name: "James",
+        age: 40,
+        location: "Toronto"
+    },
+{
+        name: "Garry",
+        age: 20,
+        location: "Vancouver"
+    }
+];
+
+// Function to find students living in Vancouver
+function findStudentsInVancouver(students) {
+    return students.filter(student => student.location === "Vancouver");
+}
