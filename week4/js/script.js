@@ -32,3 +32,11 @@ function calculateTotalPrice(billAmount, taxRate = 0.12, tipRate = 0.15) {
     const tip = billAmount * tipRate;
     return billAmount + tax + tip;
 }
+
+// Function that fetches the total price to the console
+function printTotalPrice(billAmount) {
+    const totalPrice = calculateTotalPrice(billAmount);
+    console.log(`The total price for a bill of $${billAmount.toFixed(2)} is $${totalPrice.toFixed(2)}.`);
+}
+
+printTotalPrice(2455); // For a $100 bill
