@@ -42,3 +42,25 @@ main {
   object-fit: cover;
   border-bottom: 5px solid #d0b8a8;
 }
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  gap: 10px;
+  list-style: none;
+  background-color: #d0b8a8;
+  justify-content: flex-start;
+  max-width: 100%;
+}
+  
+.tags > li {
+    background-color: #666;
+    color: #fff;
+    padding: 0.3em 0.8em;
+    border-radius: 0.2em;
+    font-size: 80%;
+    white-space: nowrap;
+}
+  
+  
