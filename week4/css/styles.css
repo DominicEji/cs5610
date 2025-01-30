@@ -1,0 +1,20 @@
+body {
+    width: 80%;
+    font-size: 20px;
+    margin: 0 auto;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f6e6d9
+}
+
+main {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  padding: 20px;
+}
+
+@media (max-width: 800px) {
+  main {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
