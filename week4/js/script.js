@@ -39,4 +39,4 @@ function printTotalPrice(billAmount) {
     console.log(`The total price for a bill of $${billAmount.toFixed(2)} is $${totalPrice.toFixed(2)}.`);
 }
 
-printTotalPrice(2455); // For a $100 bill
+printTotalPrice(2455); // For a $2455 bill
