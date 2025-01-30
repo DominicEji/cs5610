@@ -11,3 +11,16 @@ while (num <= 1024) {
     console.log(num);
     num *= 2;
 }
+
+
+let userName;
+
+do {
+  // Prompt the user to enter their name
+userName = prompt("Please enter your name:");
+
+  // Check if the input is a number or less than 2 characters
+} while (!isNaN(userName) || userName.length < 2);
+
+// Display a welcome message
+alert(`Welcome, ${userName}!`);
