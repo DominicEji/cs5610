@@ -12,7 +12,6 @@ while (num <= 1024) {
     num *= 2;
 }
 
-
 let userName;
 
 do {
@@ -24,7 +23,6 @@ userName = prompt("Please enter your name:");
 
 // Display a welcome message
 alert(`Welcome, ${userName}!`);
-
 
 // Function to calculate total price with defaults for tax and tip rates
 function calculateTotalPrice(billAmount, taxRate = 0.12, tipRate = 0.15) {
