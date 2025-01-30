@@ -68,3 +68,6 @@ function findStudentsInVancouver(students) {
 function findStudents30Plus(students) {
     return students.filter(student => student.age >= 30);
 }
+
+console.log("Students in Vancouver:", findStudentsInVancouver(students));
+console.log("Students 30+ years old:", findStudents30Plus(students));
