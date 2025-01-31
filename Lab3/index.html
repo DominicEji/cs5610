@@ -4,21 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boba Tea Order Form</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
     <div class="container">
         <h1>Boba Tea Order Form</h1>
         <form id="order-form">
         <label for="flavor">Choose a flavor:</label>
-        <select id="flavor" name="flavor" required>
+        <select id="flavor" name="flavor">
             <option value="original">original</option>
             <option value="mango">mango</option>
             <option value="strawberry">strawberry</option>
         </select>
 
         <label for="size">Choose a size</label>
-        <select id="size" name="size" required>
+        <select id="size" name="size">
             <option value="">--Please choose a size--</option>
             <option value="small">small</option>
             <option value="medium">medium</option>
@@ -27,6 +27,7 @@
 
         <label for ="topping">Choose toppings</label>
         <select id="topping" name="topping" multiple>
+            <option value="">--Please choose toppings--</option>
             <option value="boba">boba</option>
             <option value="jelly">jelly</option>
             <option value="pudding">pudding</option>
@@ -34,8 +35,6 @@
 
         <button type="button" id="place-order-btn">Place Order</button>
     </form>
-</div>
-
-<script src="js/script.js"></script>
 </body>
+<script src="js/script.js"></script>
 </html>
