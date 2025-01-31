@@ -46,3 +46,16 @@ function placeOrder(flavor, size, toppings) {
     };
     displayOrderSummary(order);
 }
+
+// Attach event listener to button
+document.getElementById('place-order-btn').addEventListener('click', () => {
+    let flavor = document.getElementById('flavor').value;
+    let size = document.getElementById('size').value;
+    let toppings = Array.from(document.getElementById('toppings').selectedOptions).map(option => option.value);
+
+    if (flavor && size) {
+        placeOrder(flavor, size, toppings);
+    } else {
+        alert('Please select both a flavor and a size.');
+    }
+});
