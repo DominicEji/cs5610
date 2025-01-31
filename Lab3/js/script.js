@@ -24,3 +24,25 @@ function calculatePrice(flavor, size, toppings) {
     let sizeMultiplier = prices.sizes[size];
     return sizeMultiplier * (basePrice + toppingPrice);
 }
+
+// Display order summary
+function displayOrderSummary(order) {
+    console.log(`Order Summary:
+- Flavor: ${order.flavor}
+- Size: ${order.size}
+- Toppings: ${order.toppings.length > 0 ? order.toppings.join(', ') : 'No toppings'}
+- Total Price: $${order.finalPrice.toFixed(2)}
+    `);
+}
+
+// Place order function
+function placeOrder(flavor, size, toppings) {
+    let finalPrice = calculatePrice(flavor, size, toppings);
+    let order = {
+        flavor: flavor,
+        size: size,
+        toppings: toppings,
+        finalPrice: finalPrice
+    };
+    displayOrderSummary(order);
+}
