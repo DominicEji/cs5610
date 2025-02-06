@@ -2,9 +2,11 @@
 function getRadiusFromUser() {
     const radius = prompt("Please enter the radius of the circle:");
     if (radius !== null && !isNaN(radius) && radius > 0) {
+        document.getElementById("radius").textContent = `value provided by user: ${radius}`;
         return parseFloat(radius);
     } else {
         alert("Invalid input. Please enter a positive number.");
+        document.getElementById("radius").textContent = "Invalid input.";
         return null;
     }
 }
