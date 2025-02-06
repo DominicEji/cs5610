@@ -36,6 +36,22 @@ function populateShoppingList(items) {
     });
 }
 
+// This function changes the list marker type using setAttribute()
+function changeListMarkerUsingAttribute() {
+    const listitems = document.querySelectorAll("li");
+    listitems.forEach(item => {
+        item.setAttribute("class", "squareList");
+    });
+}
+
+// This function changes the list marker type using classlist.add()
+function changeListMarkerUsingClassList() {
+    const listitems = document.querySelectorAll("li");
+    listitems.forEach(item => {
+        item.classList.add("squareList");
+    });
+}
+
 // Event listener to call functions when button is clicked
 document.getElementById("calculateButton").addEventListener("click", function () {
     const radius = getRadiusFromUser();
