@@ -21,6 +21,8 @@ function calculateArea(radius) {
     }
 }
 
-// Initiating the process
-const radius = getRadiusFromUser();
-calculateArea(radius);
+// Event listener to call functions when button is clicked
+document.getElementById("calculateButton").addEventListener("click", function () {
+    const radius = getRadiusFromUser();
+    calculateArea(radius);
+});
