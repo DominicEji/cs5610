@@ -86,6 +86,19 @@ img.alt = "A shopping cart image";
 img.width = 200;
 img.height = 150;
 
+// Event handler function to change background color based on button text
+function changeBackgroundColor(event) {
+    const buttonColor = event.target.textContent.toLowerCase();  // Get button text and convert to lowercase
+    event.target.style.backgroundColor = buttonColor;  // Set background color based on text
+}
+
+// Select all buttons and add the event listener
+const colorButtons = document.querySelectorAll(".colorButton");
+colorButtons.forEach(button => {
+    button.addEventListener("mouseover", changeBackgroundColor);
+});
+
+
 // Event listener to the button
 document.getElementById("updateImage").addEventListener("click", toggleButtonText);
 
