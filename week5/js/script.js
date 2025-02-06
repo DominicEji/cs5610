@@ -18,7 +18,3 @@ function calculateArea(radius) {
         document.getElementById("result").textContent = "Calculation could not be performed.";
     }
 }
-
-// Initiating the process
-const radius = getRadiusFromUser();
-calculateArea(radius);
