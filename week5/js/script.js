@@ -76,6 +76,23 @@ function toggleButtonText() {
     }
 }
 
+// Function to update the image attributes
+function updateImageAttributes() {
+    const img = document.getElementById("shoppingCart");
+
+    // Update image properties
+img.src = "images/shopping-cart.png";  // Adjust the path if needed
+img.alt = "A shopping cart image";
+img.width = 200;
+img.height = 150;
+
+// Event listener to the button
+document.getElementById("updateImage").addEventListener("click", toggleButtonText);
+
+// Ensure this event only runs once using removeEventListener
+document.getElementById("updateImage").removeEventListener("click", updateImageAttributes);
+}
+
 // Event listener to call functions when button is clicked
 document.getElementById("calculateButton").addEventListener("click", function () {
     const radius = getRadiusFromUser();
@@ -90,3 +107,7 @@ changeListMarkerUsingClassList();
 
 // Apply the green color to list items containing "green"
 changeColorForGreenItems();
+
+// Add event listeners for the button functionality
+document.getElementById("updateImage").addEventListener("click", toggleButtonText);
+document.getElementById("updateImage").addEventListener("click", updateImageAttributes, { once: true });
