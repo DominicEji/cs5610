@@ -25,7 +25,7 @@ function calculateArea(radius) {
 function populateShoppingList(items) {
     const shoppingList = document.querySelector(".shopping");
 
-    // clear anyexixting items in the list
+    // clear anyexisting items in the list
     shoppingList.innerHTML = "";
 
     // This loops through the array and creates a list items
