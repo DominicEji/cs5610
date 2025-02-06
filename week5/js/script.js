@@ -1,3 +1,7 @@
+// This is my array of shopping items   
+let shoppingItems = ["bread", "cheese", "green pepper"];
+
+
 // Function to prompt the user to enter a radius
 function getRadiusFromUser() {
     const radius = prompt("Please enter the radius of the circle:");
@@ -57,3 +61,9 @@ document.getElementById("calculateButton").addEventListener("click", function ()
     const radius = getRadiusFromUser();
     calculateArea(radius);
 });
+
+// This populates the shopping list when the page loads
+populateShoppingList(shoppingItems);
+
+// This applies the square list style using classlist.add() when the page loads
+changeListMarkerUsingClassList();
