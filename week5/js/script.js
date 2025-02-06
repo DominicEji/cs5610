@@ -56,6 +56,16 @@ function changeListMarkerUsingClassList() {
     });
 }
 
+// Function to change the text color to green if the text contains "green"
+function changeColorForGreenItems() {
+    const listItems = document.querySelectorAll("li");
+    listItems.forEach(item => {
+        if (item.textContent.toLowerCase().includes("green")) {
+            item.style.color = "green";
+        }
+    });
+}
+
 // Event listener to call functions when button is clicked
 document.getElementById("calculateButton").addEventListener("click", function () {
     const radius = getRadiusFromUser();
@@ -67,3 +77,6 @@ populateShoppingList(shoppingItems);
 
 // This applies the square list style using classlist.add() when the page loads
 changeListMarkerUsingClassList();
+
+// Apply the green color to list items containing "green"
+changeColorForGreenItems();
