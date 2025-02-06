@@ -21,6 +21,21 @@ function calculateArea(radius) {
     }
 }
 
+// Function to populate the unordered list in the array elements
+function populateShoppingList(items) {
+    const shoppingList = document.querySelector(".shopping");
+
+    // clear anyexixting items in the list
+    shoppingList.innerHTML = "";
+
+    // This loops through the array and creates a list items
+    items.forEach(item => {
+        const listitem = document.createElement("li");
+        listitem.textContent = item;
+        shoppingList.appendChild(listitem);
+    });
+}
+
 // Event listener to call functions when button is clicked
 document.getElementById("calculateButton").addEventListener("click", function () {
     const radius = getRadiusFromUser();
