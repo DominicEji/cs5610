@@ -66,6 +66,16 @@ function changeColorForGreenItems() {
     });
 }
 
+// Function to toggle the button text between "clicked!" and "Click Me!"
+function toggleButtonText() {
+    const button = document.getElementById("updateImage");
+    if (button.textContent === "Click Me!") {
+        button.textContent = "clicked!";
+    } else {
+        button.textContent = "Click Me!";
+    }
+}
+
 // Event listener to call functions when button is clicked
 document.getElementById("calculateButton").addEventListener("click", function () {
     const radius = getRadiusFromUser();
