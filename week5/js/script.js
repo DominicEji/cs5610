@@ -74,7 +74,20 @@ function toggleButtonText() {
     } else {
         button.textContent = "Click Me!";
     }
+
+    localStorage.setItem("buttonText", button.textContent);
 }
+
+// Function to restore the button text from local storage
+function restoreButtonText() {
+    const savedText = localStorage.getItem("buttonText");
+
+    if (savedText) {
+        document.getElementById("updateImage").textContent = savedText;
+    }
+}
+
+
 
 // Function to update the image attributes
 function updateImageAttributes() {
@@ -97,6 +110,36 @@ const colorButtons = document.querySelectorAll(".colorButton");
 colorButtons.forEach(button => {
     button.addEventListener("mouseover", changeBackgroundColor);
 });
+
+// Event handler to turn the hovered button's background color to green
+function handleMouseOver(event) {
+    // Check if the event target is a button inside the div
+    if (event.target.classList.contains("colorButton")) {
+        event.target.style.backgroundColor = "green";  // Set background color to green
+    }
+}
+
+// Event handler to apply a strikethrough to clicked list items
+function toggleStrikethrough(event) {
+    // Check if the clicked target is an <li> element
+    if (event.target.tagName === "LI") {
+        // Toggle between adding/removing the strikethrough
+        if (!event.target.innerHTML.includes("<del>")) {
+            event.target.innerHTML = `<del>${event.target.textContent}</del>`;
+        } else {
+            event.target.innerHTML = event.target.textContent;  // Remove strikethrough
+        }
+    }
+}
+
+// Attach event listener to the <ul>
+const shoppingList = document.querySelector(".shopping");
+shoppingList.addEventListener("click", toggleStrikethrough);
+
+
+// Select the div containing the buttons and add the event listener
+const buttonContainer = document.getElementById("colorButtonContainer");
+buttonContainer.addEventListener("mouseover", handleMouseOver);
 
 
 // Event listener to the button
@@ -124,3 +167,5 @@ changeColorForGreenItems();
 // Add event listeners for the button functionality
 document.getElementById("updateImage").addEventListener("click", toggleButtonText);
 document.getElementById("updateImage").addEventListener("click", updateImageAttributes, { once: true });
+
+restoreButtonText();
