@@ -40,13 +40,6 @@ function populateShoppingList(items) {
     });
 }
 
-// This function changes the list marker type using setAttribute()
-function changeListMarkerUsingAttribute() {
-    const listitems = document.querySelectorAll("li");
-    listitems.forEach(item => {
-        item.setAttribute("class", "squareList");
-    });
-}
 
 // This function changes the list marker type using classlist.add()
 function changeListMarkerUsingClassList() {
@@ -87,36 +80,21 @@ function restoreButtonText() {
     }
 }
 
-
-
 // Function to update the image attributes
 function updateImageAttributes() {
     const img = document.getElementById("shoppingCart");
-
-    // Update image properties
 img.src = "images/shopping-cart.png";  // Adjust the path if needed
 img.alt = "A shopping cart image";
 img.width = 200;
 img.height = 150;
+}
 
 // Event handler function to change background color based on button text
 function changeBackgroundColor(event) {
-    const buttonColor = event.target.textContent.toLowerCase();  // Get button text and convert to lowercase
-    event.target.style.backgroundColor = buttonColor;  // Set background color based on text
-}
-
-// Select all buttons and add the event listener
-const colorButtons = document.querySelectorAll(".colorButton");
-colorButtons.forEach(button => {
-    button.addEventListener("mouseover", changeBackgroundColor);
-});
-
-// Event handler to turn the hovered button's background color to green
-function handleMouseOver(event) {
-    // Check if the event target is a button inside the div
     if (event.target.classList.contains("colorButton")) {
-        event.target.style.backgroundColor = "green";  // Set background color to green
-    }
+    const buttonColor = event.target.textContent.toLowerCase();
+    event.target.style.backgroundColor = buttonColor;  
+}
 }
 
 // Event handler to apply a strikethrough to clicked list items
@@ -132,28 +110,20 @@ function toggleStrikethrough(event) {
     }
 }
 
-// Attach event listener to the <ul>
-const shoppingList = document.querySelector(".shopping");
-shoppingList.addEventListener("click", toggleStrikethrough);
-
-
-// Select the div containing the buttons and add the event listener
-const buttonContainer = document.getElementById("colorButtonContainer");
-buttonContainer.addEventListener("mouseover", handleMouseOver);
-
-
-// Event listener to the button
-document.getElementById("updateImage").addEventListener("click", toggleButtonText);
-
-// Ensure this event only runs once using removeEventListener
-document.getElementById("updateImage").removeEventListener("click", updateImageAttributes);
-}
-
 // Event listener to call functions when button is clicked
 document.getElementById("calculateButton").addEventListener("click", function () {
     const radius = getRadiusFromUser();
     calculateArea(radius);
 });
+
+// Add event listeners for the button functionality
+document.getElementById("updateImage").addEventListener("click", toggleButtonText);
+document.getElementById("updateImage").addEventListener("click", updateImageAttributes, { once: true });
+
+document.getElementById("colorButtonContainer").addEventListener("mouseover", changeBackgroundColor);
+
+document.querySelector(".shopping").addEventListener("click", toggleStrikethrough);
+
 
 // This populates the shopping list when the page loads
 populateShoppingList(shoppingItems);
@@ -164,8 +134,5 @@ changeListMarkerUsingClassList();
 // Apply the green color to list items containing "green"
 changeColorForGreenItems();
 
-// Add event listeners for the button functionality
-document.getElementById("updateImage").addEventListener("click", toggleButtonText);
-document.getElementById("updateImage").addEventListener("click", updateImageAttributes, { once: true });
 
 restoreButtonText();
