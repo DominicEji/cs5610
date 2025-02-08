@@ -18,15 +18,6 @@ const prices = {
     }
 };
 
-// This function validates order before placing it
-function validateOrder(flavor, size) {
-    if (!flavor || !size) {
-        alert('Please select both a flavor and a size.');
-        return false;
-    }
-    return true;
-}
-
 // Calculate total price
 function calculatePrice(flavor, size, toppings) {
     let basePrice = prices.flavors[flavor];
@@ -37,12 +28,11 @@ function calculatePrice(flavor, size, toppings) {
 
 // Display order summary
 function displayOrderSummary(order) {
+    let summaryMessage = `You have ordered a ${order.size} ${order.flavor} boba with ${order.toppings.length > 0 ? order.toppings.join(', ') : 'no toppings'}. Total Price: $${order.finalPrice.toFixed(2)}.`;
+
 document.getElementById('order-summary').innerHTML = `
     <h2>Order Summary</h2>
-    <p>- Flavor: ${order.flavor}</p>
-    <p>- Size: ${order.size}</p>
-    <p>- Toppings: ${order.toppings.length > 0 ? order.toppings.join(', ') : 'No toppings'}</p>
-    <p>- Total Price: $${order.finalPrice.toFixed(2)}</p>
+    <p>${summaryMessage}</p>
 `;
 }
 
