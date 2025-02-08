@@ -17,6 +17,15 @@ const prices = {
     }
 };
 
+// This function validates order before placing it
+function validateOrder(flavor, size) {
+    if (!flavor || !size) {
+        alert('Please select both a flavor and a size.');
+        return false;
+    }
+    return true;
+}
+
 // Calculate total price
 function calculatePrice(flavor, size, toppings) {
     let basePrice = prices.flavors[flavor];
@@ -26,14 +35,13 @@ function calculatePrice(flavor, size, toppings) {
 }
 
 // Display order summary
-function displayOrderSummary(order) {
-    console.log(`Order Summary:
-- Flavor: ${order.flavor}
-- Size: ${order.size}
-- Toppings: ${order.toppings.length > 0 ? order.toppings.join(', ') : 'No toppings'}
-- Total Price: $${order.finalPrice.toFixed(2)}
-    `);
-}
+document.getElementById('order-summary').innerHTML = `
+    <h2>Order Summary</h2>
+    <p>- Flavor: ${order.flavor}</p>
+    <p>- Size: ${order.size}</p>
+    <p>- Toppings: ${order.toppings.length > 0 ? order.toppings.join(', ') : 'No toppings'}</p>
+    <p>- Total Price: $${order.finalPrice.toFixed(2)}</p>
+`;
 
 // Place order function
 function placeOrder(flavor, size, toppings) {
