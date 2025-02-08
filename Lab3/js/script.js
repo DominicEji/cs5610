@@ -1,13 +1,4 @@
 
-// This function validates order before placing it
-function validateOrder(flavor, size) {
-    if (!flavor || !size) {
-        alert('Please select both a flavor and a size.');
-        return false;
-    }
-    return true;
-}
-
 // Prices object
 const prices = {
     flavors: {
@@ -26,6 +17,15 @@ const prices = {
         pudding: 1.0,
     }
 };
+
+// This function validates order before placing it
+function validateOrder(flavor, size) {
+    if (!flavor || !size) {
+        alert('Please select both a flavor and a size.');
+        return false;
+    }
+    return true;
+}
 
 // Calculate total price
 function calculatePrice(flavor, size, toppings) {
@@ -47,7 +47,12 @@ document.getElementById('order-summary').innerHTML = `
 }
 
 // Place order function
-function placeOrder(flavor, size, toppings) {
+function placeOrder() {
+    let flavor = document.getElementById('flavor').value;
+    let size = document.getElementById('size').value;
+    let toppings = Array.from(document.getElementById('toppings').selectedOptions).map(option => option.value);
+
+    if (!validateOrder(flavor, size)) {
     let finalPrice = calculatePrice(flavor, size, toppings);
     let order = {
         flavor: flavor,
@@ -57,16 +62,10 @@ function placeOrder(flavor, size, toppings) {
     };
     displayOrderSummary(order);
 }
+}
 
 // Attach event listener to button
 document.getElementById('place-order-btn').addEventListener('click', () => {
-    let flavor = document.getElementById('flavor').value;
-    let size = document.getElementById('size').value;
-    let toppings = Array.from(document.getElementById('toppings').selectedOptions).map(option => option.value);
-
-    // Validate order
-    if (validateOrder(flavor, size)) {
-        placeOrder(flavor, size, toppings);
-    }
+        placeOrder();  // No parameters needed
 
 });
