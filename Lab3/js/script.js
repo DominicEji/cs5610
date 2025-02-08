@@ -1,3 +1,13 @@
+
+// This function validates order before placing it
+function validateOrder(flavor, size) {
+    if (!flavor || !size) {
+        alert('Please select both a flavor and a size.');
+        return false;
+    }
+    return true;
+}
+
 // Prices object
 const prices = {
     flavors: {
@@ -17,15 +27,6 @@ const prices = {
     }
 };
 
-// This function validates order before placing it
-function validateOrder(flavor, size) {
-    if (!flavor || !size) {
-        alert('Please select both a flavor and a size.');
-        return false;
-    }
-    return true;
-}
-
 // Calculate total price
 function calculatePrice(flavor, size, toppings) {
     let basePrice = prices.flavors[flavor];
@@ -35,6 +36,7 @@ function calculatePrice(flavor, size, toppings) {
 }
 
 // Display order summary
+function displayOrderSummary(order) {
 document.getElementById('order-summary').innerHTML = `
     <h2>Order Summary</h2>
     <p>- Flavor: ${order.flavor}</p>
@@ -42,6 +44,7 @@ document.getElementById('order-summary').innerHTML = `
     <p>- Toppings: ${order.toppings.length > 0 ? order.toppings.join(', ') : 'No toppings'}</p>
     <p>- Total Price: $${order.finalPrice.toFixed(2)}</p>
 `;
+}
 
 // Place order function
 function placeOrder(flavor, size, toppings) {
@@ -61,9 +64,9 @@ document.getElementById('place-order-btn').addEventListener('click', () => {
     let size = document.getElementById('size').value;
     let toppings = Array.from(document.getElementById('toppings').selectedOptions).map(option => option.value);
 
-    if (flavor && size) {
+    // Validate order
+    if (validateOrder(flavor, size)) {
         placeOrder(flavor, size, toppings);
-    } else {
-        alert('Please select both a flavor and a size.');
     }
+
 });
