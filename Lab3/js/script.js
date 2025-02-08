@@ -52,20 +52,23 @@ function placeOrder() {
     let size = document.getElementById('size').value;
     let toppings = Array.from(document.getElementById('toppings').selectedOptions).map(option => option.value);
 
-    if (!validateOrder(flavor, size)) {
+    // calculate the final price using the selected values
     let finalPrice = calculatePrice(flavor, size, toppings);
+
+    // create an order object
     let order = {
         flavor: flavor,
         size: size,
         toppings: toppings,
         finalPrice: finalPrice
     };
+
+    // display order summary
     displayOrderSummary(order);
-}
 }
 
 // Attach event listener to button
 document.getElementById('place-order-btn').addEventListener('click', () => {
-        placeOrder();  // No parameters needed
+        placeOrder();  // call placeOrder function
 
 });
