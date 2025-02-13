@@ -1,5 +1,7 @@
 const fs = require('fs');
 
+const logger = require('./logger.js');
+
 const message = 'Hello, this is a message written using Node.js!';
 
 // Write to a file (creates the file if it doesn’t exist)
@@ -17,6 +19,12 @@ fs.readFile('output.txt', 'utf8', (err, data) => {
         return;
     }
     console.log('File contents:', data);
+
+    // Call the log function from logger module
+    logger.log();
+
+    // Access the version variable from logger module
+    console.log('Version:', logger.version);
 });
 });
 
