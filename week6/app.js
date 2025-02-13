@@ -32,7 +32,7 @@ fs.readFile('output.txt', 'utf8', (err, data) => {
 
 // Set up a basic Express route
 app.get('/', (req, res) => {
-    res.send('Hello, World from Express!');
+    res.send('Hello World from Express!');
 });
 
 // Add the new route
