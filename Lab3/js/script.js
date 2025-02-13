@@ -1,3 +1,4 @@
+
 // Prices object
 const prices = {
     flavors: {
@@ -27,35 +28,37 @@ function calculatePrice(flavor, size, toppings) {
 
 // Display order summary
 function displayOrderSummary(order) {
-    console.log(`Order Summary:
-- Flavor: ${order.flavor}
-- Size: ${order.size}
-- Toppings: ${order.toppings.length > 0 ? order.toppings.join(', ') : 'No toppings'}
-- Total Price: $${order.finalPrice.toFixed(2)}
-    `);
+    let summaryMessage = `You have ordered a ${order.size} ${order.flavor} boba with ${order.toppings.length > 0 ? order.toppings.join(', ') : 'no toppings'}. Total Price: $${order.finalPrice.toFixed(2)}.`;
+
+document.getElementById('order-summary').innerHTML = `
+    <h2>Order Summary</h2>
+    <p>${summaryMessage}</p>
+`;
 }
 
 // Place order function
-function placeOrder(flavor, size, toppings) {
+function placeOrder() {
+    let flavor = document.getElementById('flavor').value;
+    let size = document.getElementById('size').value;
+    let toppings = Array.from(document.getElementById('toppings').selectedOptions).map(option => option.value);
+
+    // calculate the final price using the selected values
     let finalPrice = calculatePrice(flavor, size, toppings);
+
+    // create an order object
     let order = {
         flavor: flavor,
         size: size,
         toppings: toppings,
         finalPrice: finalPrice
     };
+
+    // display order summary
     displayOrderSummary(order);
 }
 
 // Attach event listener to button
 document.getElementById('place-order-btn').addEventListener('click', () => {
-    let flavor = document.getElementById('flavor').value;
-    let size = document.getElementById('size').value;
-    let toppings = Array.from(document.getElementById('toppings').selectedOptions).map(option => option.value);
+        placeOrder();  // call placeOrder function
 
-    if (flavor && size) {
-        placeOrder(flavor, size, toppings);
-    } else {
-        alert('Please select both a flavor and a size.');
-    }
 });
