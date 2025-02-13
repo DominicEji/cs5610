@@ -6,6 +6,6 @@ function log() {
 
 // Export the function and version
 module.exports = {
-    log,
+    log: log,
     version
 };
