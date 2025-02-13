@@ -35,6 +35,11 @@ app.get('/', (req, res) => {
     res.send('Hello, World from Express!');
 });
 
+// Add the new route
+app.get('/about', (req, res) => {
+    res.send('This is the about page!');
+});
+
 // Start the Express server
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
