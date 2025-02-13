@@ -10,3 +10,13 @@ fs.writeFile('output.txt', message, 'utf8', (err) => {
     }
     console.log('File written successfully!');
 
+// This function uses the readFile method to read the contents of a file.
+fs.readFile('output.txt', 'utf8', (err, data) => {
+    if (err) {
+        console.error('Error reading file:', err);
+        return;
+    }
+    console.log('File contents:', data);
+});
+});
+
