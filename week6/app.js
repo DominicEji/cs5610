@@ -24,7 +24,7 @@ fs.readFile('output.txt', 'utf8', (err, data) => {
     logger.log();
 
     // Access the version variable from logger module
-    console.log('Version:', logger.version);
+    console.log('Logger version:', logger.version);
 });
 });
 
