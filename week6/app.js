@@ -1,6 +1,8 @@
 const fs = require('fs');
-
+const express = require('express');
 const logger = require('./logger.js');
+const app = express();
+const port = 3000;
 
 const message = 'Hello, this is a message written using Node.js!';
 
@@ -18,7 +20,7 @@ fs.readFile('output.txt', 'utf8', (err, data) => {
         console.error('Error reading file:', err);
         return;
     }
-    console.log('File contents:', data);
+    console.log('File content:', data);
 
     // Call the log function from logger module
     logger.log();
@@ -28,3 +30,15 @@ fs.readFile('output.txt', 'utf8', (err, data) => {
 });
 });
 
+// Set up a basic Express route
+app.get('/', (req, res) => {
+    res.send('Hello, World from Express!');
+});
+
+// Start the Express server
+app.listen(port, () => {
+    console.log(`Server running on http://localhost:${port}`);
+});
+
+// Logs a message to confirm the server is starting
+console.log('Server starting...');
