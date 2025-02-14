@@ -4,6 +4,9 @@ const logger = require('./logger.js');
 const app = express();
 const port = 3000;
 
+// Serve static files from the "public" folder
+app.use(express.static('public'));
+
 const message = 'Hello, this is a message written using Node.js!';
 
 // Write to a file (creates the file if it doesn’t exist)
