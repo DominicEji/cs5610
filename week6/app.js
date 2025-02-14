@@ -45,6 +45,11 @@ app.get('/tasks', (req, res) => {
     res.send('<hi>List of all the tasks</h1>');
 });
 
+// Add the /tasks/:taskId route
+app.get('/tasks/:taskId', (req, res) => {
+    const taskId = req.params.taskId;
+    res.send('You are viewing task ${taskId}');
+});
 
 // Start the Express server
 app.listen(port, () => {
