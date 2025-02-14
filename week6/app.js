@@ -40,6 +40,12 @@ app.get('/about', (req, res) => {
     res.send('This is the about page!');
 });
 
+// Add the /tasks route
+app.get('/tasks', (req, res) => {
+    res.send('<hi>List of all the tasks</h1>');
+});
+
+
 // Start the Express server
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
