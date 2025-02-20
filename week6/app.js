@@ -5,6 +5,10 @@ const logger = require('./logger.js');
 const app = express();
 const port = 3000;
 
+// Promisify fs.writeFile and fs.readFile
+const writeFileAsync = util.promisify(fs.writeFile);
+const readFileAsync = util.promisify(fs.readFile);
+
 // This sets the view engine to pug
 app.set('view engine', 'pug');
 
