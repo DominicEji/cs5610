@@ -9,7 +9,7 @@ router.get("/", (req, res) => {
 // Route to get a specific task by ID
 router.get("/:taskId", (req, res) => {
     const taskId = req.params.taskId;
-    res.send(`You are viewing task ${taskId}`);
+    res.render('task', { id: taskId});
 });
 
 // Export the router
