@@ -3,6 +3,9 @@ const express = require('express');
 const logger = require('./logger.js');
 const app = express();
 const port = 3000;
+const tasksRouter = require("./routes/tasks");
+
+app.use("/tasks", tasksRouter);
 
 // Serve static files from the "public" folder
 app.use(express.static('public'));
@@ -61,3 +64,4 @@ app.listen(port, () => {
 
 // Logs a message to confirm the server is starting
 console.log('Server starting...');
+
