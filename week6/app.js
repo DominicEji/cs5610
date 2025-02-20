@@ -3,6 +3,13 @@ const express = require('express');
 const logger = require('./logger.js');
 const app = express();
 const port = 3000;
+
+// This sets the view engine to pug
+app.set('view engine', 'pug');
+
+// This sets the views directory to the "views" folder
+app.set('views', './views');
+
 const tasksRouter = require("./routes/tasks");
 
 app.use("/tasks", tasksRouter);
