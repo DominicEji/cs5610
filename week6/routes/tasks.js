@@ -6,7 +6,7 @@ const router = express.Router();
 router.get("/", (req, res) => {
     axios.get('https://jsonplaceholder.typicode.com/todos')
         .then((response) => {
-            rws.json(response.data);
+            res.json(response.data);
         })
         .catch((error) => {
             res.status(500).send('Error fetching tasks');
@@ -23,10 +23,12 @@ router.get("/:taskId", async(req, res) => {
         const userResponse = await axios.get(`https://jsonplaceholder.typicode.com/users/${task.userId}`);
         const user = userResponse.data;
 
+        const completeStatus = task.completed ? 'Completed' : 'Not completed';
+
         res.render('task', {
             id: taskId,
             title: task.title,
-            completed: task.completed ? "Completed" : "Not Completed",
+            completed: completeStatus,
             userName: user.name
         });
 
