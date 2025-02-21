@@ -4,13 +4,35 @@ const router = express.Router();
 
 // Route to get all tasks
 router.get("/", (req, res) => {
-    res.send("<h1>List of all the tasks</h1>");
-});
-
+    axios.get('https://jsonplaceholder.typicode.com/todos')
+        .then((response) => {
+            rws.json(response.data);
+        })
+        .catch((error) => {
+            res.status(500).send('Error fetching tasks');
+        });
+    });
+        
 // Route to get a specific task by ID
-router.get("/:taskId", (req, res) => {
+router.get("/:taskId", async(req, res) => {
     const taskId = req.params.taskId;
-    res.render('task', { id: taskId});
+    try {
+        const taskResponse = await axios.get(`https://jsonplaceholder.typicode.com/todos/${taskId}`);
+        const task = taskResponse.data;
+
+        const userResponse = await axios.get(`https://jsonplaceholder.typicode.com/users/${task.userId}`);
+        const user = userResponse.data;
+
+        res.render('task', {
+            id: taskId,
+            title: task.title,
+            completed: task.completed ? "Completed" : "Not Completed",
+            userName: user.name
+        });
+
+    } catch (error) {
+        res.status(500).send('Error fetching task or user details');
+    }
 });
 
 // Export the router
