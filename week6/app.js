@@ -25,7 +25,7 @@ app.use(express.static('public'));
 const message = 'Hello, this is a message written using Node.js!';
 
 // File operation using .then() and .catch()
-writeAsync('output.txt', message, 'utf8',) 
+writeFileAsync('output.txt', message, 'utf8',) 
     .then(() => {
         console.log('File written successfully!');
         return readFileAsync('output.txt', 'utf8');
