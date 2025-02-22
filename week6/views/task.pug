@@ -4,6 +4,7 @@ html(lang="en")
     title Task Details
     body
     h1 You are viewing task #{id}
-    p Task title: #{title}
-    p #{userName} is responsible for this task
-    p Task status: #{completed}
+    ul 
+        li The title of the task is #{title}
+        li The task is #{completed}
+        li #{userName} is responsible for this task
