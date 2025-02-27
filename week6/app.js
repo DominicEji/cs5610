@@ -2,6 +2,7 @@ const fs = require('fs');
 const util = require('util');
 const express = require('express');
 const logger = require('./logger.js');
+const { connectToDatabase } = require('./db');
 const app = express();
 const port = 3000;
 
@@ -69,8 +70,9 @@ app.get('/about', (req, res) => {
 });
 
 // This starts the express server
-app.listen(port, () => {
+app.listen(port, async () => {
     console.log(`Server running on http://localhost:${port}`);
+    await connectToDatabase();
 });
 
 // Logs a message to confirm the server is starting
