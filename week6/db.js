@@ -27,4 +27,4 @@ async function insertTask(task) {
     }
 }
 
-module.exports = { connectToDatabase };
+module.exports = { connectToDatabase, insertTask };
