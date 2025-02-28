@@ -5,6 +5,7 @@ const logger = require('./logger.js');
 const { connectToDatabase } = require('./db');
 const app = express();
 const port = 3000;
+const tasksRouter = require('./routes/tasks');
 
 // Promisify fs.writeFile and fs.readFile
 const writeFileAsync = util.promisify(fs.writeFile);
@@ -16,19 +17,14 @@ app.set('view engine', 'pug');
 // This sets the views directory to the "views" folder
 app.set('views', './views');
 
-const tasksRouter = require("./routes/tasks");
-const exp = require('constants');
+// This helps to parse JSON and URL-encoded request
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.use("/tasks", tasksRouter);
 
 // Serve static files from the "public" folder
 app.use(express.static('public'));
-
-// Parse JSON bodies for this app
-app.use(express.json());
-
-// Parse URL-encoded bodies for this app
-app.use(express.urlencoded({ extended: true }));
 
 const message = 'Hello, this is a message written using Node.js!';
 
