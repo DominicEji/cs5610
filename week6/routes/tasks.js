@@ -38,6 +38,10 @@ router.get("/:taskId", async(req, res) => {
     }
 });
 
+router.get('/newtask', (req, res) => {
+    res.render('newtask');
+});
+
 router.post('/', async (req, res) => {
     try {
         const task = req.body; // Get data from the request body
