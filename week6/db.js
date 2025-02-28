@@ -15,4 +15,16 @@ async function connectToDatabase() {
     }
 }
 
+async function insertTask(task) {
+    try {
+        const db = await connectToDatabase();
+        const result = await db.collection('tasks').insertOne(task);
+        console.log('Task inserted:', result.insertedId);
+        return result;
+    } catch (error) {
+        console.error('Error inserting task:', error);
+        throw error;
+    }
+}
+
 module.exports = { connectToDatabase };
