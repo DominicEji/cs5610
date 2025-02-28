@@ -2,8 +2,10 @@ const fs = require('fs');
 const util = require('util');
 const express = require('express');
 const logger = require('./logger.js');
+const { connectToDatabase } = require('./db');
 const app = express();
 const port = 3000;
+const tasksRouter = require('./routes/tasks');
 
 // Promisify fs.writeFile and fs.readFile
 const writeFileAsync = util.promisify(fs.writeFile);
@@ -15,7 +17,9 @@ app.set('view engine', 'pug');
 // This sets the views directory to the "views" folder
 app.set('views', './views');
 
-const tasksRouter = require("./routes/tasks");
+// This helps to parse JSON and URL-encoded request
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.use("/tasks", tasksRouter);
 
@@ -69,8 +73,9 @@ app.get('/about', (req, res) => {
 });
 
 // This starts the express server
-app.listen(port, () => {
+app.listen(port, async () => {
     console.log(`Server running on http://localhost:${port}`);
+    await connectToDatabase();
 });
 
 // Logs a message to confirm the server is starting
