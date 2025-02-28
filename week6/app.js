@@ -17,11 +17,18 @@ app.set('view engine', 'pug');
 app.set('views', './views');
 
 const tasksRouter = require("./routes/tasks");
+const exp = require('constants');
 
 app.use("/tasks", tasksRouter);
 
 // Serve static files from the "public" folder
 app.use(express.static('public'));
+
+// Parse JSON bodies for this app
+app.use(express.json());
+
+// Parse URL-encoded bodies for this app
+app.use(express.urlencoded({ extended: true }));
 
 const message = 'Hello, this is a message written using Node.js!';
 
