@@ -10,6 +10,7 @@ router.get("/", (req, res) => {
             res.json(response.data);
         })
         .catch((error) => {
+            console.error('Error fetching tasks:', error.message);
             res.status(500).send('Error fetching tasks');
         });
     });
@@ -19,9 +20,16 @@ router.get("/:taskId", async(req, res) => {
     const taskId = req.params.taskId;
     try {
         const taskResponse = await axios.get(`https://jsonplaceholder.typicode.com/todos/${taskId}`);
+
+        if (taskResponse.status == 404) {
+            return res.status(404).send('Task not found');
+        }
         const task = taskResponse.data;
 
         const userResponse = await axios.get(`https://jsonplaceholder.typicode.com/users/${task.userId}`);
+        if (userResponse.status == 404) {
+            return res.status(404).send('User not found');
+        }
         const user = userResponse.data;
 
         const completeStatus = task.completed ? 'Completed' : 'Not completed';
@@ -34,7 +42,8 @@ router.get("/:taskId", async(req, res) => {
         });
 
     } catch (error) {
-        res.status(500).send('Error fetching task or user details');
+        console.error('Error fetching task or user details:', error.message);
+        res.status(500).send('Error fetching task or user details:');
     }
 });
 
@@ -48,7 +57,7 @@ router.post('/', async (req, res) => {
         await insertTask(task); // Insert the task into the database
         res.redirect('/tasks'); // Redirect to the /tasks route
     } catch (error) {
-        console.error('Error inserting task:', error);
+        console.error('Error inserting task:', error.message);
         res.status(500).send('Internal Server Error');
     }
 });
