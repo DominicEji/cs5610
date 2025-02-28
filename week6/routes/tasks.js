@@ -1,6 +1,7 @@
 const axios = require('axios');
 const express = require("express");
 const router = express.Router();
+const { insertTask } = require('../db');
 
 // Route to get all tasks
 router.get("/", (req, res) => {
@@ -36,6 +37,18 @@ router.get("/:taskId", async(req, res) => {
         res.status(500).send('Error fetching task or user details');
     }
 });
+
+router.post('/', async (req, res) => {
+    try {
+        const task = req.body; // Get data from the request body
+        await insertTask(task); // Insert the task into the database
+        res.redirect('/tasks'); // Redirect to the /tasks route
+    } catch (error) {
+        console.error('Error inserting task:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
 
 // Export the router
 module.exports = router;
