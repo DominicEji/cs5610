@@ -2,6 +2,12 @@ const express = require("express");
 const router = express.Router();
 const { getAllTasks, findTask } = require('../db');
 const {objectId} = require('mongodb');
+const path = require('path');
+
+// Route to serve the new task form
+router.get('/newtask', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/newtask.html'));
+});
 
 // Route to get all tasks
 router.get("/", async (req, res) => {
