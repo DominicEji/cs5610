@@ -2,6 +2,7 @@ const axios = require('axios');
 const express = require("express");
 const router = express.Router();
 const { insertTask } = require('../db');
+const path = require('path');
 
 // Route to get all tasks
 router.get("/", (req, res) => {
@@ -13,6 +14,11 @@ router.get("/", (req, res) => {
             console.error('Error fetching tasks:', error.message);
             res.status(500).send('Error fetching tasks');
         });
+    });
+
+// Route to serve the newtask.html form
+router.get('/newtask', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/newtask.html'));
     });
         
 // Route to get a specific task by ID
