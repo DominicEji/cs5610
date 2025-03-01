@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { getAllTasks, insertTask, findTask } = require('../db');
-const {objectId} = require('mongodb');
+const { ObjectId } = require('mongodb');
 const path = require('path');
 
 // Route to handle form submission
@@ -35,7 +35,7 @@ router.get("/", async (req, res) => {
 // Route to get a specific task by ID
 router.get("/:taskId", async (req, res) => {
     const taskId = req.params.taskId;
-    if (!objectId.isValid(taskId)) {
+    if (!ObjectId.isValid(taskId)) {
         return res.status(400).send('Invalid task ID');
     }
     try {
