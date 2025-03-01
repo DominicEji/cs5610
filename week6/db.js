@@ -38,4 +38,15 @@ async function getAllTasks() {
     }
 }
 
-module.exports = { connectToDatabase, insertTask, getAllTasks };
+async function findTask(query) {
+    try {
+        const db = await connectToDatabase();
+        const task = await db.collection('tasks').findOne(query);
+        return task;
+    } catch (error) {
+        console.error('Error finding task:', error);
+        throw error;
+    }
+}
+
+module.exports = { connectToDatabase, insertTask, getAllTasks, findTask };
