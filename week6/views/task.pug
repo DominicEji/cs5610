@@ -3,9 +3,15 @@ html(lang="en")
 head
     title Task Details
     link(rel="stylesheet", href="/styles.css")
+    style.
+        body {
+            background-color: green; /* Green background */
+            color: white; /* Ensure text is readable */
+        }
 body
-h1 You are viewing task #{id} using a template
-ul 
-    li The title of the task is #{title}
-    li The task is #{completed}
-    li #{userName} is responsible for this task
+    h1 You are viewing task #{id} using a template
+    ul 
+        li The title of the task is #{title}
+        li The task is #{completed}
+        li The due date is #{dueDate}
+        li #{userName} is responsible for this task
