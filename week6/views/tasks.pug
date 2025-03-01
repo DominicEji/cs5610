@@ -1,0 +1,12 @@
+doctype html
+html(lang="en")
+head
+    title All Tasks
+    link(rel="stylesheet", href="/styles.css")
+body
+    h1 All Tasks
+    ul
+        each task in tasks
+            li
+                a(href=`/tasks/${task._id}`)= task.title
+                |  - #{task.completed ? 'Completed' : 'Not completed'}
