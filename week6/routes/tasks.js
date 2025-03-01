@@ -1,8 +1,20 @@
 const express = require("express");
 const router = express.Router();
-const { getAllTasks, findTask } = require('../db');
+const { getAllTasks, insertTask, findTask } = require('../db');
 const {objectId} = require('mongodb');
 const path = require('path');
+
+// Route to handle form submission
+router.post('/', async (req, res) => {
+    try {
+        const task = req.body; // Get data from the request body
+        await insertTask(task); // Insert the task into the database
+        res.redirect('/tasks'); // Redirect to the /tasks route
+    } catch (error) {
+        console.error('Error inserting task:', error.message);
+        res.status(500).send('Internal Server Error');
+    }
+});
 
 // Route to serve the new task form
 router.get('/newtask', (req, res) => {
@@ -23,6 +35,9 @@ router.get("/", async (req, res) => {
 // Route to get a specific task by ID
 router.get("/:taskId", async (req, res) => {
     const taskId = req.params.taskId;
+    if (!objectId.isValid(taskId)) {
+        return res.status(400).send('Invalid task ID');
+    }
     try {
         const task = await findTask({ _id: new ObjectId(taskId) });
         if (!task) {
@@ -38,7 +53,7 @@ router.get("/:taskId", async (req, res) => {
     } catch (error) {
         console.error('Error fetching task details:', error.message);
         res.status(500).send('Error fetching task details');
-    }
+    } 
 });
 
 // Export the router
