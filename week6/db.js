@@ -27,4 +27,26 @@ async function insertTask(task) {
     }
 }
 
-module.exports = { connectToDatabase, insertTask };
+async function getAllTasks() {
+    try {
+        const db = await connectToDatabase();
+        const tasks = await db.collection('tasks').find().toArray(); // Convert cursor to array
+        return tasks;
+    } catch (error) {
+        console.error('Error fetching tasks:', error);
+        throw error;
+    }
+}
+
+async function findTask(query) {
+    try {
+        const db = await connectToDatabase();
+        const task = await db.collection('tasks').findOne(query);
+        return task;
+    } catch (error) {
+        console.error('Error finding task:', error);
+        throw error;
+    }
+}
+
+module.exports = { connectToDatabase, insertTask, getAllTasks, findTask };
