@@ -1,0 +1,17 @@
+body {
+  padding: 20px;
+}
+
+/* Style for the div in the App component */
+div {
+  border: 1px solid #000;
+  padding: 20px;
+  margin: 20px;
+}
+
+/* Style for the header in the Header component */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
