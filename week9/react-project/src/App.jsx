@@ -21,10 +21,17 @@ function App() {
       date: "June 5th at 8 am",
     },
   ];
-  
+
   return (
     <div>
       <Header appName={appName} />
+      <ul>
+        {tasks.map((task) => (
+          <li key={task.id}>
+            <strong>{task.title}</strong> - {task.date}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
