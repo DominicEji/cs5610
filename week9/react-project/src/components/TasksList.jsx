@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 function TasksList() {
     // Hard-coded tasks array
-    const tasks = [
+    const [tasks, setTasks] = useState([
       {
         id: 1,
         title: "Review week 9 material",
@@ -17,7 +17,7 @@ function TasksList() {
         title: "Work on assignment 2",
         date: "June 5th at 8 am",
       },
-    ];
+    ]);
   
     return (
       <ul>
