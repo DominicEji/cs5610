@@ -21,8 +21,8 @@ ul {
   padding: 0;
 }
 
-li {
-  background: #f4f4f4;
+.task-item {
+  background-color: #f4f4f4;
   margin: 10px 0;
   padding: 10px;
   border-radius: 5px;
