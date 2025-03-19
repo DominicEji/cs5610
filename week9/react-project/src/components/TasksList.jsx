@@ -28,6 +28,25 @@ function TasksList() {
         ))}
       </ul>
     );
-  }
-  
-  export default TasksList;
+
+  // Updated with function to handle task deletion
+  const handleDelete = (id) => {
+    setTasks(tasks.filter((task) => task.id !== id));
+  };
+
+  return (
+    <div>
+      {tasks.length > 0 ? (
+        <ul>
+          {tasks.map((task) => (
+            <Task key={task.id} task={task} onDelete={handleDelete} />
+          ))}
+        </ul>
+      ) : (
+        <p>No Tasks Left</p>
+      )}
+    </div>
+  );
+}
+
+export default TasksList;
