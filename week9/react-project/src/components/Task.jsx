@@ -1,6 +1,6 @@
 import { FaTrash } from 'react-icons/fa';
 
-function Task({ task }) {
+function Task({ task, onDelete }) {
   return (
     <li>
       <div className="task-item">
@@ -9,7 +9,10 @@ function Task({ task }) {
           <p>{task.date}</p>
         </div>
         <div className="task-actions">
-          <FaTrash className="delete-icon" />
+          <FaTrash 
+          className="delete-icon"
+          onClick={() => onDelete(task.id)}
+            />
         </div>
       </div>
     </li>
