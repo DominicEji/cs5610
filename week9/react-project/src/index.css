@@ -30,3 +30,20 @@ ul {
   justify-content: space-between;
   align-items: center;
 }
+
+.task-content {
+  flex: 1;
+}
+
+.task-actions {
+  margin-left: 10px;
+}
+
+.delete-icon {
+  cursor: pointer;
+  color: #ff4444;
+}
+
+.delete-icon:hover {
+  color: #cc0000;
+}
