@@ -20,14 +20,6 @@ function TasksList() {
         date: "June 5th at 8 am",
       },
     ]);
-  
-    return (
-      <ul>
-        {tasks.map((task) => (
-          <Task key={task.id} task={task} />
-        ))}
-      </ul>
-    );
 
   // Updated with function to handle task deletion
   const handleDelete = (id) => {
