@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import TasksList from './components/TasksList';
 import AddTask from './components/AddTask';
@@ -11,9 +11,15 @@ function App() {
 
   // Fetch tasks from the fake server
   useEffect(() => {
-    const fetchTasks = async () => {
+    const fetchData = async () => {
       try {
         const response = await fetch('http://localhost:5000/tasks');
+        
+        // Check if the response is successful
+        if (!response.ok) {
+          throw new Error('Failed to fetch tasks');
+        }
+  
         const data = await response.json();
         setTasks(data); // Update state with fetched tasks
       } catch (error) {
@@ -21,8 +27,8 @@ function App() {
       }
     };
 
-    fetchTasks(); // Call the async function
-  }, []); 
+    fetchData(); // Call the async function
+  }, []);
 
   const toggleAddTask = () => {
     setShowAddTask(!showAddTask);
