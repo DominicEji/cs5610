@@ -36,7 +36,7 @@ function App() {
         onToggleAddTask={toggleAddTask}
       />
       {showAddTask && <AddTask />} {/* Conditionally render AddTask */}
-      <TasksList />
+      <TasksList tasks={tasks} />
     </div>
   );
 }
