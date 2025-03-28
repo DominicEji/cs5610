@@ -1,30 +1,52 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function AddTask() {
-  // State variables for title and date
   const [title, setTitle] = useState('');
   const [date, setDate] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
-  // Handle input changes
   const handleTitleChange = (e) => setTitle(e.target.value);
   const handleDateChange = (e) => setDate(e.target.value);
 
-  // Handle form submission
-  const handleSubmit = (e) => {
-    e.preventDefault(); // Prevent page refresh
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setError(null);
 
-    // Create an object with the form data
-    const task = {
-      title,
-      date,
-    };
+    try {
+      const task = { title, date };
+      
+      const response = await fetch('http://localhost:5000/tasks', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(task),
+      });
 
-    // Log the task object to the console
-    console.log(task);
+      if (!response.ok) {
+        throw new Error('Failed to add task');
+      }
 
-    // Clear the form inputs (optional)
-    setTitle('');
-    setDate('');
+      const createdTask = await response.json();
+      console.log('Task created:', createdTask);
+      
+      // Navigate to the new task's details page
+      navigate(`/tasks/${createdTask.id}`);
+
+      // Clear form (optional - since we're navigating away)
+      setTitle('');
+      setDate('');
+      
+    } catch (err) {
+      console.error('Error adding task:', err);
+      setError(err.message);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -35,17 +57,22 @@ function AddTask() {
           type="text"
           value={title}
           onChange={handleTitleChange}
+          required
         />
       </div>
       <div className="form-control">
         <label>Date</label>
         <input
-          type="text"
+          type="date"  // Changed to type="date" for better date input
           value={date}
           onChange={handleDateChange}
+          required
         />
       </div>
-      <button type="submit">Save</button>
+      <button type="submit" disabled={isLoading}>
+        {isLoading ? 'Saving...' : 'Save'}
+      </button>
+      {error && <p className="error">{error}</p>}
     </form>
   );
 }
