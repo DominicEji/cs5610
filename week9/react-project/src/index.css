@@ -87,3 +87,25 @@ button {
 button:hover {
   background: #0056b3;
 }
+
+.nav-link {
+  margin-right: 8px; /* Adjust this value as needed */
+}
+
+.not-found-page {
+  text-align: center;
+  padding: 2rem;
+  margin-top: 2rem;
+}
+
+.not-found-page h2 {
+  color: #d9534f;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.not-found-page p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  color: #666;
+}
